@@ -1,6 +1,7 @@
 # Compiled class file
 *.class
-
+.virtual
+node_modules
 # Log file
 *.log
 
