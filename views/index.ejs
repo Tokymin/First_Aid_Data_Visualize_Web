@@ -1,28 +1,86 @@
-<h1>Hello ECharts!</h1>
-<div id="main" style="width: 600px;height:400px;"></div>
-<script>
-    var chartDom = document.getElementById('main');
-    var myChart = echarts.init(chartDom);
-    var option;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+</head>
+<body>
+    <h1>Hello ECharts!</h1>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <div id="line-chart" style="width: 600px;height:400px;margin-top: 20px;"></div>
 
-    option = {
-        title: {
-            text: 'ECharts 入门示例'
-        },
-        tooltip: {},
-        legend: {
-            data: ['销量']
-        },
-        xAxis: {
-            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-        },
-        yAxis: {},
-        series: [{
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-        }]
-    };
+    <script>
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
 
-    option && myChart.setOption(option);
-</script>
+        option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        option && myChart.setOption(option);
+
+        // Initialize the line chart for heart rate data
+        var lineChartDom = document.getElementById('line-chart');
+        var lineChart = echarts.init(lineChartDom);
+        var lineOption;
+
+        // Sample data for heart rate over a day
+        var hours = ['00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', 
+                     '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'];
+        var heartRates = [75, 70, 68, 65, 64, 63, 62, 64, 67, 70, 73, 76, 78, 80, 82, 83, 85, 87, 88, 86, 84, 81, 79, 77];
+
+        lineOption = {
+            title: {
+                text: '心率数据时序图'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: hours
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                name: '心率',
+                type: 'line',
+                data: heartRates,
+                markPoint: {
+                    data: [
+                        { type: 'max', name: 'Max' },
+                        { type: 'min', name: 'Min' }
+                    ]
+                },
+                markLine: {
+                    data: [
+                        { type: 'average', name: 'Avg' }
+                    ]
+                }
+            }]
+        };
+
+        lineOption && lineChart.setOption(lineOption);
+    </script>
+</body>
+</html>
