@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/Tokymin/First_Aid_Data_Visualize_Web#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "echarts": "^5.5.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1"
   }
 }
