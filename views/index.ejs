@@ -11,6 +11,56 @@
     <div id="main" style="width: 600px;height:400px;"></div>
     <div id="line-chart" style="width: 600px;height:400px;margin-top: 20px;"></div>
 
+    <h2>Breath Data</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>DevCode</th>
+                <th>Time</th>
+                <th>ControlId</th>
+                <th>IdentifierName</th>
+                <th>Ppeak</th>
+                <th>Pmean</th>
+                <th>Peep</th>
+                <th>Pplat</th>
+                <th>VtiTotal</th>
+                <th>VteTotal</th>
+                <th>Mvispn</th>
+                <th>Mvespn</th>
+                <th>Rsbi</th>
+                <th>Ie</th>
+                <th>FiO2</th>
+                <th>Cdyn</th>
+                <th>Cst</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% breathData.forEach(function(item) { %>
+                <tr>
+                    <td><%= item.id %></td>
+                    <td><%= item.devCode %></td>
+                    <td><%= item.time %></td>
+                    <td><%= item.controlId %></td>
+                    <td><%= item.identifierName %></td>
+                    <td><%= item.ppeak %></td>
+                    <td><%= item.pmean %></td>
+                    <td><%= item.peep %></td>
+                    <td><%= item.pplat %></td>
+                    <td><%= item.vtiTotal %></td>
+                    <td><%= item.vteTotal %></td>
+                    <td><%= item.mvispn %></td>
+                    <td><%= item.mvespn %></td>
+                    <td><%= item.rsbi %></td>
+                    <td><%= item.ie %></td>
+                    <td><%= item.fiO2 %></td>
+                    <td><%= item.cdyn %></td>
+                    <td><%= item.cst %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
     <script>
         var chartDom = document.getElementById('main');
         var myChart = echarts.init(chartDom);
